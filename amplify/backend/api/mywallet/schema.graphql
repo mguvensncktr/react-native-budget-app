@@ -1,0 +1,16 @@
+type User @model {
+  id: ID!
+  username: String!
+  email: String!
+  imageUri: String!
+  transactions: [Transaction] @connection(keyName: "byUser", fields: ["id"])
+}
+
+type Transaction @model @key(name: "byUser", fields: ["userID"]) {
+  id: ID!
+  desc: String!
+  userID: ID!
+  type: String!
+  createdAt: String!
+  amount: Int!
+}
